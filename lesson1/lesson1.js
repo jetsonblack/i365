@@ -10,8 +10,8 @@ function sayHello() {
 
 const NAME = "Jetson";
 let age = calcAge(prompt('give me your birth year'));
-let result = `Hello ${NAME}!, you are ${age} years old`;
-document.getElementById("result").innerHTML = result;
+let result = `based on my calculations you are ${age} years old! (this might be wrong lmao)`;
+document.getElementById("basic-age").innerHTML = result;
 
 
 function calcAge(byear) {
@@ -52,6 +52,22 @@ function showStudent() {
 
 let studentInfo = showStudent();
 console.log(studentInfo);
+
+// PROBLEM 1.3
+// Rewrite the function and make sure it uses:
+// -   Prompts for the three variables
+// -   Template literal for the string
+
+function showStudent2() {
+    let username = prompt("What is the student's name?");
+    let s_age = prompt("What is the student's age?");
+    let smajor = prompt("what is the students major?");
+    return `${username} is a ${s_age} year old ${smajor} student`;
+}
+let showStudent2Result = showStudent2();
+console.log(showStudent2Result);
+document.getElementById("result").innerHTML = showStudent2Result;
+
 
 /*
 THE ABOVE SECTION IS JUST MESSING AROUND!
