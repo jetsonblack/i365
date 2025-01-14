@@ -68,7 +68,37 @@ let showStudent2Result = showStudent2();
 console.log(showStudent2Result);
 document.getElementById("result").innerHTML = showStudent2Result;
 
+// PROBLEM 1.4
+// Use variables to set two values.
+// -   Try first setting them yourself.
+// -   Then try using a prompt. (Does it still work?)
+// Display the average of the two values as a string.
+// -   Example output: "The average of 2 and 4 is 3."
 
+function getAverage(val1, val2) {
+    return ((parseFloat(val1) + parseFloat(val2)) / 2).toString();
+}
+
+let avgResult = getAverage(prompt("Give Value 1"), prompt("Give Value 2"))
+console.log(avgResult);
+document.getElementById("average").innerHTML = avgResult;
+
+// PROBLEM 1.5
+// Write a function that takes a temperature in Farenheit (number)
+// Returns the temperature converted to Celcius (number)
+// -   Example output: "32°F = 0°C"
+// PONDER: the prompt returns a string.. you shouldn't need to convert the string
+// to a number for your program to work. In JS, can we do math with strings?!?
+
+function calculateCelcius(degF) {
+    const cel = (degF - 32) * 5 / 9;
+    return `Farenheit: ${degF}, Celcius: ${cel}`;
+}
+
+let currentTemp = prompt('What is the current temperature in Farenheit?');
+let tempResult = calculateCelcius(currentTemp);
+console.log(tempResult);
+document.getElementById("temp").innerHTML = tempResult;
 /*
 THE ABOVE SECTION IS JUST MESSING AROUND!
 -=======================================-
