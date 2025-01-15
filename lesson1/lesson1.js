@@ -102,5 +102,4 @@ document.getElementById("temp").innerHTML = tempResult;
 /*
 THE ABOVE SECTION IS JUST MESSING AROUND!
 -=======================================-
-THE BELOW CODE IS POSSIBLY A GAME
 */
