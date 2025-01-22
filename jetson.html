@@ -1,22 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- 
+___________________________________________________________________________
+
+                            copyright � 2024 Jetson Black
+                            x.com/jetsonbb
+                            http://silo.cs.indiana.edu:56779/
+
+                            just a simple landing page 
+                            for my A348 Class!
+___________________________________________________________________________
+-->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>White Cat Website :: Mastering the WWW</title>
-    <style tyle="text/css" media="all">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="language" content="English">
+    <meta name="author" content="jetson">
+    <meta name="title" content="http://silo.cs.indiana.edu:56779/">
+    <meta name="keywords" content="jetsonbb, jetsonblack, a348jetson, jetson, a348">
+    <meta property="og:title" content="asokry.neocities.org">
+    <meta property="og:description" content="bababooey - @jetsonbb">
+    <meta property="og:image"
+        content="https://i.postimg.cc/dQT07try/96257331e42fd82012b16e4312d68257-1000x1000x1-68234273.jpg">
+    <meta property="og:url" content="http://silo.cs.indiana.edu:56779/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="jetson">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@jetsonbb">
+    <meta name="twitter:site" content="@jetsonbb">
+    <meta name="twitter:title" content="asokry.neocities.org">
+    <meta name="twitter:description" content="pookie, what - @jetsonbb">
+    <meta name="twitter:image"
+        content="https://i.postimg.cc/dQT07try/96257331e42fd82012b16e4312d68257-1000x1000x1-68234273.jpg">
+    <meta name="twitter:url" content="http://silo.cs.indiana.edu:56779/">
+    <title> jetson's weird cat website</title>
+    <link rel="icon" href="https://i.postimg.cc/dQT07try/96257331e42fd82012b16e4312d68257-1000x1000x1-68234273.jpg"
+        type="image/x-icon">
+    <style>
         body {
-            padding: 10% 50%;
-            background-color: #EEEEEE;
-            font-family: Arial, Helvetica, sans-serif;
+            cursor: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5552cb82-6fb8-4c7f-9d29-a10b2e5daf6c/daslox6-8f2085d1-c576-4cbc-8174-3ec510422509.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzU1NTJjYjgyLTZmYjgtNGM3Zi05ZDI5LWExMGIyZTVkYWY2Y1wvZGFzbG94Ni04ZjIwODVkMS1jNTc2LTRjYmMtODE3NC0zZWM1MTA0MjI1MDkuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.d3LAmGBt2UBDomLHBYZv93laNRBamAIYEzKnEqutrKk"), auto;
+            text-align: center;
+            font: 18px "Times New Roman";
+            width: 650px;
+            margin: auto;
+            background-color: #fcfafc;
+        }
+
+        .codeblock {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            font-family: "Courier New", monospace;
+            font-size: 16px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            color: #333;
+            text-align: left;
+        }
+
+        .codeblock::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .codeblock::-webkit-scrollbar-thumb {
+            background: #aaa;
+            border-radius: 4px;
+        }
+
+        .codeblock::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+
+        #currentTime {
+            color: #EEE;
+            position: fixed;
+            bottom: 5px;
+            left: 5px;
+            font-size: 16px;
+        }
+
+        #copyright {
+            color: #EEE;
+            position: fixed;
+            bottom: 5px;
+            right: 5px;
+            font-size: 16px;
         }
     </style>
 </head>
 
 <body>
-    <h2>text</h2>
+    <p>
+        <a href="https://jetsonblack.neocities.org/">
+            <img src="https://file.garden/Z4ph-aNbmH1QA48M/spinning-cat.gif" alt="cat-spinning-gif">
+        </a>
+    </p>
+    <h2>my name is jetson and i like cats</h2>
+    <div class="codeblock" id="myCodeBlock">
+        jetblack@silo:~$ cd /nobackup/jetblack/348
+        jetblack@silo:/nobackup/jetblack/348$ nano -w apache/htdocs/index.html
+        jetblack@silo:/nobackup/jetblack/348$ nano -w apache/conf/httpd.conf
+        jetblack@silo:/nobackup/jetblack/348$ /nobackup/jetblack/348/apache/bin/apachectl start
+        jetblack@silo:/nobackup/jetblack/348$ ps -ef | grep jetblack
+        jetblack 2025079 1 0 10:08 ? 00:00:01 /lib/systemd/systemd --user
+        jetblack 2025080 2025079 0 10:08 ? 00:00:00 (sd-pam)
+        jetblack 2025086 2025079 0 10:08 ? 00:00:00 /usr/bin/pipewire
+        jetblack 2025087 2025079 0 10:08 ? 00:00:00 /usr/bin/pipewire-media-session
+        jetblack 2025100 2025079 0 10:08 ? 00:00:00 /usr/bin/dbus-daemon --session --address=systemd: --nofork
+        --nopidfile --systemd-activation --syslog-only
+        root 2263847 2771 0 10:35 ? 00:00:00 sshd: jetblack [priv]
+        jetblack 2263983 2263847 0 10:35 ? 00:00:00 sshd: jetblack@notty
+        jetblack 2263984 2263983 0 10:35 ? 00:00:00 /usr/lib/openssh/sftp-server
+        root 2265269 2771 0 10:36 ? 00:00:00 sshd: jetblack [priv]
+        jetblack 2265435 2265269 0 10:36 ? 00:00:00 sshd: jetblack@notty
+        jetblack 2265436 2265435 0 10:36 ? 00:00:00 /usr/lib/openssh/sftp-server
+        root 2265639 2771 0 10:37 ? 00:00:00 sshd: jetblack [priv]
+        jetblack 2265761 2265639 0 10:37 ? 00:00:00 sshd: jetblack@pts/63
+        jetblack 2265762 2265761 0 10:37 pts/63 00:00:00 -bash
+        jetblack 2772944 1 0 11:22 ? 00:00:00 /nobackup/jetblack/348/apache/bin/httpd -k start
+        jetblack 2772945 2772944 0 11:22 ? 00:00:00 /nobackup/jetblack/348/apache/bin/httpd -k start
+        jetblack 2772946 2772944 0 11:22 ? 00:00:00 /nobackup/jetblack/348/apache/bin/httpd -k start
+        jetblack 2772947 2772944 0 11:22 ? 00:00:00 /nobackup/jetblack/348/apache/bin/httpd -k start
+        jetblack 2772948 2772944 0 11:22 ? 00:00:00 /nobackup/jetblack/348/apache/bin/httpd -k start
+        jetblack 2772949 2772944 0 11:22 ? 00:00:00 /nobackup/jetblack/348/apache/bin/httpd -k start
+        jetblack 2773033 2265762 0 11:22 pts/63 00:00:00 ps -ef
+        jetblack 2773034 2265762 0 11:22 pts/63 00:00:00 grep jetblack
+        jetblack@silo:/nobackup/jetblack/348$ ls -la
+        total 29668
+        drwx------ 5 jetblack students 94 Jan 17 11:14 .
+        drwx------ 8 jetblack scratch 134 Jan 17 10:46 ..
+        drwxr-xr-x 15 jetblack students 4096 Jan 17 10:56 apache
+        drwx------ 12 jetblack students 4096 Jan 17 10:56 httpd-2.2.2
+        -rw------- 1 jetblack students 30371840 Jan 17 10:10 httpd-2.2.2.tar
+        drwx------ 3 jetblack students 56 Jan 17 11:16 lab1
+        netstat -a | grep 99999
+    </div>
+    <p><button id="toggleButton" onclick="toggleCodeBlock()">^</button></p>
+    <p><a href="https://legacy.cs.indiana.edu/classes/a348/spr2025/">A348 Mastering The World Wide Web</a></p>
+    <p><a href="https://github.com/jetsonblack">github</a></p>
+    <p><a href="https://filegarden.com/">filegarden</a></p>
+    <p id="currentTime"></p>
+    <p id="copyright">Jetson Black 2025</p>
 
+    <p>
+        <a href="https://aso.nekoweb.org">
+            <img src="https://file.garden/Z4ph-aNbmH1QA48M/yan.gif" alt="yandhi-spinning">
+        </a>
+    </p>
+
+    <script>
+        // Display current UTC time, updated every second
+        function showTime() {
+            document.getElementById('currentTime').innerHTML = new Date().toLocaleTimeString("en-US", { timeZone: 'America/New_York' });
+        }
+        showTime();
+        setInterval(showTime, 1000);
+
+        // Toggle code block visibility
+        function toggleCodeBlock() {
+            const codeBlock = document.getElementById("myCodeBlock");
+            if (codeBlock.style.display === "none") {
+                codeBlock.style.display = "block";
+            } else {
+                codeBlock.style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 </html>
