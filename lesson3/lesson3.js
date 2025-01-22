@@ -57,6 +57,8 @@ function printNames(strName = "jetson", number = 3) {
 printNames()
 printNames("j", 10);
 
+console.log("repeat".repeat(55));
+
 // PROBLEM 3.3
 /** Multiplies two numbers
  * @param { number } a
