@@ -71,3 +71,23 @@ message.insertAdjacentHTML('afterbegin', html);
 Practice Poblems
 =======================================
 */
+
+// PROBLEM 5.1 
+// Select the following elements and set each selection to a variable, then console.log the results:
+//     H2
+//     P with a class 'message'
+
+let h2var = document.querySelectorAll("h2");
+let messageVar = document.querySelector(".message");
+console.log(h2var);
+console.log(messageVar);
+
+// PRONBLEM 5.2
+//     Select the CONTAINER in today's lesson HTML and insert an H1 above the content that's already there. H1 should say "Headline".
+//     Now select the H2 and add a paragraph directly after it.
+//     In the UL, add three LIs.
+
+let container = document.querySelector(".container");
+container.insertAdjacentHTML(beforebegin, `<h1>Headline<h2>`);
+h2var.insertAdjacentHTML(afterend, `<p>THis is a paragraph</p>`);
+
