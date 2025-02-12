@@ -65,5 +65,81 @@ const zodiac = [
 ];
 
 
+function makeAnimals() {
+    // first step is to select HTML where we want to insert animals
+    // grab data and then generate the HTMl
+    // then insert the HTML into the class "animals"
 
 
+    //how do we get the animal names and they need to be lowercase
+    zodiac.forEach((zodiacAnimal) => {
+        let currentAnimal = zodiacAnimal.animal.toLowerCase();
+        // let years = zodiacAnimal.years;
+        // let traits = zodiacAnimal.traits;
+        let animalHTML = `<img data-name="${currentAnimal}" src="images/${currentAnimal}.png" alt="${currentAnimal}" />`;
+        document.querySelector('.animals').insertAdjacentHTML('beforeend', animalHTML);
+    })
+}
+makeAnimals();
+
+
+
+
+// when a user clicks a animal (event) => show the animal details 
+// in the #details
+
+// we first select all the imgs in the animals class div, then we go through
+// each element in the returned array of elements and add a click event handler
+// to the element and connect it to the showDetails function in a callback manner
+
+// user callback functions for everything, only use annon functions for single use/simple functions
+function showDetails(event) {
+    let clickedAnimal = event.target.dataset.name;
+    console.log(clickedAnimal);
+    //after grabbing the name of the clicked animal, we need to connect to the
+    // datbase and then insert HTML into the page based on that.
+    // zodiac.forEach((animal) => {
+    //     if (clickedAnimal == animal.animal.toLowerCase()) {
+    //         let html = `
+    //         <h3>${animal.animal}</h3>
+    //         <h4>${animal.traits}</h4>
+    //         <p>Years: ${animal.years.join(", ")}</p>
+    //         `;
+    //         document.querySelector('#details').insertAdjacentHTML('beforeend', html);
+    //     }
+    // }
+
+    let foundAnimal = zodiac.find((element) => element.animal.toLowerCase() == clickedAnimal);
+    console.log(foundAnimal);
+    let html = `
+        <h3>${foundAnimal.animal}</h3>
+        <h4>${foundAnimal.traits}</h4>
+        <p>Years: ${foundAnimal.years.join(", ")}</p>
+        `;
+    document.querySelector('#details').insertAdjacentHTML('beforeend', html);
+}
+
+function main() {
+    makeAnimals();
+    document.querySelectorAll('.animals img').forEach((element) => {
+        element.addEventListener('click', showDetails);
+    });
+
+}
+main();
+
+
+
+
+// <!-- <img data-name="rat" src="images/rat.png" alt="rat" />
+// <img data-name="ox" src="images/ox.png" alt="ox" />
+// <img data-name="tiger" src="images/tiger.png" alt="tiger" />
+// <img data-name="rabbit" src="images/rabbit.png" alt="rabbit" />
+// <img data-name="dragon" src="images/dragon.png" alt="dragon" />
+// <img data-name="snake" src="images/snake.png" alt="snake" />
+// <img data-name="horse" src="images/horse.png" alt="horse" />
+// <img data-name="sheep" src="images/sheep.png" alt="sheep" />
+// <img data-name="monkey" src="images/monkey.png" alt="monkey" />
+// <img data-name="rooster" src="images/rooster.png" alt="rooster" />
+// <img data-name="dog" src="images/dog.png" alt="dog" />
+// <img data-name="pig" src="images/pig.png" alt="pig" /> -->
