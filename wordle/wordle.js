@@ -9,6 +9,7 @@ import { fullList } from "./full-list.js"; //valid inputs
 // globals
 let wordleWord = [];
 let currentGuess = [];
+let status = [];
 const currentTile = {
     row: 1,
     tile: 1,
@@ -23,12 +24,13 @@ function keyClicked(event) {
     let currentKey = event.currentTarget.id;
 
     switch (currentKey) {
-        case 'Enter':
-            console.log('ENTER TILE:', currentKey);
+        case 'enter':
+            // console.log('ENTER TILE:', currentKey);
+            checkGuess();
             break;
 
         case 'backspace':
-            console.log('BACKSPACE TILE:', currentKey);
+            // console.log('BACKSPACE TILE:', currentKey);
             backSpace();
             break;
 
@@ -49,11 +51,12 @@ function keyClicked(event) {
     window.addEventListener('keydown', (event) => {
         let regex = /^[a-zA-Z]+$/;
         if (event.key === 'Escape') {
-            console.log('ESCAPE KEY:', event.key);
+            // console.log('ESCAPE KEY:', event.key);
         } else if (event.key === 'Enter') {
-            console.log('ENTER KEY:', event.key);
+            checkGuess();
+            // console.log('ENTER KEY:', event.key);
         } else if (event.key === 'Backspace') {
-            console.log('BACKSPACE KEY:', event.key);
+            // console.log('BACKSPACE KEY:', event.key);
             backSpace();
         } else if (
             regex.test(event.key) &&
@@ -68,7 +71,7 @@ function keyClicked(event) {
             // console.log('ALPHABET KEY:', event.key);
             buildGuess(event.key);
         } else {
-            console.log('not a valid key');
+            // console.log('not a valid key');
         }
     });
 })();
@@ -176,6 +179,115 @@ function backSpace() {
     }
 
 }
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+//  MAKE A GUESS: CHECK THE GUESS
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+/**
+ * Checks if a guessed word is valid, and if so sends it to be evaluated
+ * Note: evaluateWord(array) takes an array based off the guessed word
+ */
+function checkGuess() {
+    if (currentGuess.length < 5) {
+        showNotice('size');
+        return;
+    }
+    if (!isValid(currentGuess)) {
+        showNotice('invalid');
+        return;
+    }
+    let row = document.querySelector(`.row-${currentTile.row}`);
+
+    // Track letter frequencies in wordleWord using a dixtionary,
+    // for each letter in wordle word we are going to place it into the dictionary, and increment occurances.
+    // we are going to do two passes over the words, first we are going to check for complete correctness
+    // this is to mitigate errors/false positives that will impact the 'present' stuff
+    // after checking for complete correctness we know that the remaining tiles either are partially correct or
+    // completely wrong.
+
+
+    let letterCount = {};
+    for (let letter of wordleWord) {
+        letterCount[letter] = (letterCount[letter] || 0) + 1; // we want to set the letter frequencies in a 
+    }
+    let guessStatus = Array(5).fill(null);
+    // First pass, essentially reducing what we handle in the next pass
+    for (let i = 0; i < 5; i++) {
+        let tile = row.querySelector(`[data-tile="${i + 1}"]`);
+        if (currentGuess[i] === wordleWord[i]) {
+            tile.classList.add('color-correct');
+            guessStatus[i] = 'c';
+            letterCount[currentGuess[i]]--;
+        }
+    }
+
+    // Second pass: Mark present letters (only if extra occurrences exist)
+    for (let i = 0; i < 5; i++) {
+        let tile = row.querySelector(`[data-tile="${i + 1}"]`);
+        if (guessStatus[i] !== 'c' && wordleWord.includes(currentGuess[i]) && letterCount[currentGuess[i]] > 0) {
+            tile.classList.add('color-present');
+            guessStatus[i] = 'p';
+            letterCount[currentGuess[i]]--; // Reduce count for the used instance
+        } else if (guessStatus[i] !== 'c') {
+            tile.classList.add('color-absent');
+            guessStatus[i] = 'a';
+        }
+    }
+
+    status = guessStatus;
+    currentTile.row++;
+    currentTile.tile = 1;
+    currentGuess = [];
+
+    if (checkVictory()) {
+        showNotice('won');
+    }
+}
+
+function checkVictory() {
+    let count = 0;
+    for (let i = 0; i <= 5; i++) {
+        if (status[i] == 'c') {
+            count++;
+        }
+    }
+    if (count == 5) {
+        return true;
+    }
+    else {
+        return false;
+    }
+
+
+}
+/**
+ * Determines if the current guess is a word recognized as a guess by Wordle
+ * @param {array} currentWord
+ * @returns {boolean}
+ */
+function isValid(currentWord) {
+    return fullList.find((word) => word == currentWord.join(''));
+}
+
+function showNotice(reason) {
+    let notice = document.querySelector('.notice');
+    if (reason == 'size') {
+        notice.textContent = "Not Enough Letters";
+    }
+    else if (reason == 'invalid') {
+        notice.textContent = "Not a Valid World";
+    }
+    else if (reason == 'won') {
+        notice.textContent = "You Won!";
+    }
+    notice.classList.add('open');
+    setTimeout(() => {
+        notice.classList.remove('open');
+    }, 1500);
+}
+
+
+
 function deleteTile() {
     // grab the row and PREVIOUS tile added
     // empty out the content of the tile, remove the active class
